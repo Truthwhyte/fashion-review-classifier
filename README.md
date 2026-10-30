@@ -21,6 +21,10 @@ Test set: 3,096 reviews, 18% not recommended. Scores are for the *not recommende
 
 On a 500-review sample, the zero-shot BART-MNLI model reached F1 0.680 with no labelled data (baseline 0.698, DistilBERT 0.756 on the same sample).
 
+![Confusion matrices for both trained models and precision-recall curves on the test set](figures/evaluation.png)
+
+DistilBERT catches 468 of the 561 unhappy shoppers in the test set, against 443 for the baseline, at the cost of 6 more false alarms. Its precision-recall curve sits above the baseline's mainly at high recall.
+
 ## Key findings
 
 - **Fine-tuning helped, modestly.** DistilBERT gained about 2 F1 points, mostly through recall (0.790 → 0.834), catching around 25 more unhappy shoppers in the test set. The simple baseline gets most of the way there at a fraction of the cost.
@@ -28,6 +32,8 @@ On a 500-review sample, the zero-shot BART-MNLI model reached F1 0.680 with no l
 - **Some "errors" are label noise.** The model's most confident mistakes were five-star rave reviews marked "not recommended", which are most likely mis-ticked boxes. Other hard cases: shoppers who complain but still recommend, and politely worded criticism.
 - **Words the baseline learned** for unhappy shoppers include *disappointed*, *not flattering*, *unflattering*, *cheap*, *going back* and *wanted to (love)*.
 - **Trend** has the highest share of unhappy shoppers, but it is the smallest department, so that figure is less reliable.
+
+![Class balance, review length by class, and share not recommended by department](figures/eda.png)
 
 ## Method
 
@@ -40,6 +46,8 @@ On a 500-review sample, the zero-shot BART-MNLI model reached F1 0.680 with no l
 ## Run it yourself
 
 Click **Open in Colab** above, then *Runtime → Change runtime type → T4 GPU* and *Runtime → Run all*. It takes about 10 minutes.
+
+To run it locally instead: `pip install -r requirements.txt`, then open the notebook (a GPU is strongly recommended for the DistilBERT section).
 
 ## What I'd do next
 
