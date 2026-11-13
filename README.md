@@ -57,6 +57,12 @@ To run it locally instead: `pip install -r requirements.txt`, then open the note
 - Group flagged reviews by theme (sizing, fabric, colour) for actionable summaries
 - Serve the best model through a small Flask API for a dashboard
 
+## Future Work
+
+- Experiment with larger transformer models.
+- Tune classification thresholds for improved recall.
+- Deploy an interactive demo using Streamlit.
+
 ## Tools
 
 Python · pandas · NumPy · scikit-learn · PyTorch · Hugging Face Transformers and Datasets · Matplotlib · Google Colab
